@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>ZEBRADOG: Loading Video...</title>
+<script type="text/javascript" src="../../js/jquery-1.6.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	var $_GET = {};
+	document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
+	    function decode(s){ return decodeURIComponent(s.split("+").join(" ")); }
+	    $_GET[decode(arguments[1])] = decode(arguments[2]);
+	});
+	if($_GET['id']) window.location = '/'+$_GET['id'];
+	var id = document.location.toString().substr(document.location.toString().lastIndexOf("/")+1);
+	if((parseFloat(id) == parseInt(id)) && !isNaN(id)){
+		$('#video').html('<iframe src="http://player.vimeo.com/video/'+id+'?byline=0&amp;portrait=0&amp;color=ffffff&amp;autoplay=1" width="450" height="800" frameborder="0"></iframe>');
+		$.getJSON('http://vimeo.com/api/v2/video/'+id+'.json?callback=?',function(v){
+			if(v[0]){
+				var title = v[0]['title'];
+				$('#title').text(title);
+				document.title = 'ZEBRADOG: '+title;
+			}else{
+				$('#title').text('');
+				document.title = 'ZEBRADOG';
+			}
+		});
+	}else{
+		document.title = 'ZEBRADOG';
+		$('#title').text('Please specify a video.');
+	}			
+});
+</script>
+<style type="text/css"> 
+body,html{
+	margin:0;
+	padding:0;
+	font-family:verdana, sans-serif;
+	color:#595959;
+	text-align:center;
+	background-color:black;
+}
+a img{
+	border:0px;
+}
+#title{
+	font-weight:normal;
+	font-size:16px;
+	float:left;
+	text-align:left;
+	margin:8px 0;
+	padding:0;
+	color:#828282;
+}
+#container{
+	margin:40px auto 0 auto;
+	width:450px;
+}
+#video{
+	border:1px solid #333;
+	height:800px;
+	width:450px;
+}
+</style>
+</head>
+<body>
+<div id="container">
+	<div id="video"></div>
+	<h1 id="title">Loading Video...</h1>
+</div>
+</body>
+</html>
