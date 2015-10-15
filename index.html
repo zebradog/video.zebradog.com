@@ -1,6 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!-- test -->
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>ZEBRADOG: Loading Video...</title>
@@ -15,8 +14,8 @@ $(function(){
 	if($_GET['id']) window.location = '/'+$_GET['id'];
 	var id = document.location.toString().substr(document.location.toString().lastIndexOf("/")+1);
 	if((parseFloat(id) == parseInt(id)) && !isNaN(id)){
-		$('#video').html('<iframe src="http://player.vimeo.com/video/'+id+'?byline=0&amp;portrait=0&amp;color=ffffff&amp;autoplay=1" width="800" height="450" frameborder="0"></iframe>');
-		$.getJSON('http://vimeo.com/api/v2/video/'+id+'.json?callback=?',function(v){
+		$('#video').html('<iframe src="https://player.vimeo.com/video/'+id+'?byline=0&amp;portrait=0&amp;color=ffffff&amp;autoplay=1" width="800" height="450" frameborder="0"></iframe>');
+		$.getJSON('https://vimeo.com/api/v2/video/'+id+'.json?callback=?',function(v){
 			if(v[0]){
 				var title = v[0]['title'];
 				$('#title').text(title);
@@ -29,10 +28,10 @@ $(function(){
 	}else{
 		document.title = 'ZEBRADOG';
 		$('#title').text('Please specify a video.');
-	}			
+	}
 });
 </script>
-<style type="text/css"> 
+<style type="text/css">
 body,html{
 	margin:0;
 	padding:0;
@@ -83,7 +82,7 @@ a img{
 	<div id="video"></div>
 	<h1 id="title" class="hidden">Loading Video...</h1>
 	<div id="credits">
-		Copyright &copy; 2015 <a href="http://www.zebradog.com"><img src="logo_zd.gif" alt="Zebradog"></a>
+		Copyright &copy; 2015 <a href="https://www.zebradog.com"><img src="logo_zd.gif" alt="Zebradog"></a>
 		<br style="clear:both">
 	</div>
 </div>
