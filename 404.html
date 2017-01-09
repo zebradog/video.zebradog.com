@@ -14,7 +14,7 @@ $(function(){
 	if($_GET['id']) window.location = '/'+$_GET['id'];
 	var id = document.location.toString().substr(document.location.toString().lastIndexOf("/")+1);
 	if((parseFloat(id) == parseInt(id)) && !isNaN(id)){
-		$('#video').html('<iframe src="https://player.vimeo.com/video/'+id+'?byline=0&amp;portrait=0&amp;color=ffffff&amp;autoplay=1" width="800" height="450" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>');
+		$('#video').html('<iframe src="https://player.vimeo.com/video/'+id+'?byline=0&amp;portrait=0&amp;color=ffffff&amp;autoplay=1" width="1280" height="720" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>');
 		$.getJSON('https://vimeo.com/api/v2/video/'+id+'.json?callback=?',function(v){
 			if(v[0]){
 				var title = v[0]['title'];
@@ -54,7 +54,7 @@ a img{
 }
 #container{
 	margin:40px auto 0 auto;
-	width:800px;
+	width:1280px;
 }
 #container #credits{
 	padding:0px 0 0px 0;
@@ -68,8 +68,8 @@ a img{
 }
 #video{
 	border:1px solid #333;
-	height:450px;
-	width:800px;
+	height:720px;
+	width:1280px;
 }
 .hidden{
   visibility:hidden;
