@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ZEBRADOG: Loading Video...</title>
 <script type="text/javascript" src="js/jquery-1.6.1.min.js"></script>
 <script type="text/javascript">
@@ -54,7 +55,7 @@ a img{
 }
 #container{
 	margin:40px auto 0 auto;
-	width:1280px;
+	max-width: 1282px;
 }
 #container #credits{
 	padding:0px 0 0px 0;
@@ -67,9 +68,18 @@ a img{
 	margin:0 0 -11px 2px;
 }
 #video{
-	border:1px solid #333;
-	height:720px;
-	width:1280px;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+.video-container {
+	box-sizing: border-box;
+	border: 1px solid #333;
+	margin: 0 auto;
+	padding: 0 0 56.25% 0;
+	position: relative;
 }
 .hidden{
   visibility:hidden;
@@ -79,7 +89,9 @@ a img{
 </head>
 <body>
 <div id="container">
-	<div id="video"></div>
+	<div class="video-container">
+		<div id="video"></div>
+	</div>
 	<h1 id="title" class="hidden">Loading Video...</h1>
 	<div id="credits">
 		Copyright &copy; 2017 <a href="https://www.zebradog.com"><img src="logo_zd.gif" alt="Zebradog"></a>
