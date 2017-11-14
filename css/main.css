@@ -40,11 +40,15 @@ img {
 #credits img {
   vertical-align: top;
 }
-#video{
+#video {
   height: 100%;
   left: 0;
   position: absolute;
   top: 0;
+  width: 100%;
+}
+#video iframe {
+  height: 100%;
   width: 100%;
 }
 .video-container {
