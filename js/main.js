@@ -1,10 +1,4 @@
 $(function(){
-	var $_GET = {};
-	document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
-	    function decode(s){ return decodeURIComponent(s.split("+").join(" ")); }
-	    $_GET[decode(arguments[1])] = decode(arguments[2]);
-	});
-	if($_GET['id']) window.location = '/'+$_GET['id'];
 	var id = document.location.toString().substr(document.location.toString().lastIndexOf("/")+1);
 	if((parseFloat(id) == parseInt(id)) && !isNaN(id)){
 		$('#video').html('<iframe src="https://player.vimeo.com/video/'+id+'?byline=0&amp;portrait=0&amp;color=ffffff&amp;autoplay=1" width="1280" height="720" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>');
