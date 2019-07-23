@@ -1,6 +1,13 @@
 $(function(){
-	var id = document.location.toString().substr(document.location.toString().lastIndexOf("/")+1);
-	if((parseFloat(id) == parseInt(id)) && !isNaN(id)){
+	const parser = document.createElement('a');
+	parser.href = window.location.href;
+
+	const pathname = parser.pathname;
+
+	const id = Number(pathname.substring(pathname.lastIndexOf('/') + 1)),
+	      isValid = id && !isNaN(id);
+
+	if (isValid) {
 		$('#video').html('<iframe src="https://player.vimeo.com/video/'+id+'?byline=0&amp;portrait=0&amp;color=ffffff&amp;autoplay=1" width="1280" height="720" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>');
 		$.getJSON('https://vimeo.com/api/v2/video/'+id+'.json?callback=?',function(v){
 			if(v[0]){
@@ -12,7 +19,7 @@ $(function(){
 				document.title = 'ZEBRADOG';
 			}
 		});
-	}else{
+	} else {
 		document.title = 'ZEBRADOG';
 		$('#title').text('Please specify a video.');
 	}
