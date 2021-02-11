@@ -23,4 +23,7 @@ $(function(){
 		document.title = 'ZEBRADOG';
 		$('#title').text('Please specify a video.');
 	}
+
+	let year = new Date().getFullYear() + '';
+	document.getElementById('copyright-date').innerHTML = year;
 });
